@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TotalPaidAmount } from '../Model/billerModel';
 import { BillerService } from '../biller.service';
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,10 +13,13 @@ export class DashboardComponent implements OnInit {
   totalMonthlyReport: { totalMonthlyReport: TotalPaidAmount[]; };
 
 
-  toggleProBanner(event) {
+  toggleProBanner(event: Event) {
     console.log("123");
     event.preventDefault();
-    document.querySelector('body').classList.toggle('removeProbanner');
+    const bodyElement = document.querySelector('body');
+    if (bodyElement) {
+      bodyElement.classList.toggle('removeProbanner');
+    }
   }
 
   constructor(private billerService: BillerService) { }

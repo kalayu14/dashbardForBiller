@@ -17,7 +17,7 @@ import { BillerService } from '../biller.service';
 export class AllUnpaidBillsComponent implements OnInit {
 
 
-  ELEMENT_DATA: UnPaidBillersList[];
+  ELEMENT_DATA: UnPaidBillersList[] = [];
   displayedColumns: string[] = ['Biller Id', 'Biller name', 'Count'];
 
   dataSource = new MatTableDataSource<UnPaidBillersList>(this.ELEMENT_DATA);

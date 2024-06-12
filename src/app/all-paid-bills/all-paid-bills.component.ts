@@ -18,7 +18,7 @@ import { BillerService } from '../biller.service';
   styleUrls: ['./all-paid-bills.component.scss']
 })
 export class AllPaidBillsComponent implements OnInit {
-  ELEMENT_DATA: BillersListAndTotalPaidAmount[];///* 'Biller name', */
+  ELEMENT_DATA: BillersListAndTotalPaidAmount[]=[];///* 'Biller name', */
  
   displayedColumns: string[] = ['Biller Id', 'Paid count', 'Total bill amount due', 'Total paid amount', 'Total unpaid amount'];
 

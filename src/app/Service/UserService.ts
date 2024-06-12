@@ -28,9 +28,24 @@ export class UserService {
      } 
 
      // Auth methods
-      setToken(token) {
-        localStorage.setItem('token', token);
+     setToken(token: string): void {
+      if (typeof Storage === 'undefined') {
+        console.error('localStorage is not available');
+        return;
       }
+    
+      if (!token) {
+        console.error('Token is undefined or null');
+        return;
+      }
+    
+      try {
+        localStorage.setItem('token', token);
+      } catch (error) {
+        console.error('Failed to set token:', error);
+      }
+    }
+    
     
       getToken() {
         return localStorage.getItem('token');
