@@ -6,12 +6,14 @@ describe('UpdateOneBillerRangeComponent', () => {
   let component: UpdateOneBillerRangeComponent;
   let fixture: ComponentFixture<UpdateOneBillerRangeComponent>;
 
-  beforeEach(async () => {
+  beforeEach(waitForAsync () => {
     await TestBed.configureTestingModule({
-      imports: [UpdateOneBillerRangeComponent]
+      declarations: [ UpdateOneBillerRangeComponent ]
     })
     .compileComponents();
-    
+  });
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(UpdateOneBillerRangeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -6,12 +6,14 @@ describe('PaidOneBillerComponent', () => {
   let component: PaidOneBillerComponent;
   let fixture: ComponentFixture<PaidOneBillerComponent>;
 
-  beforeEach(async () => {
+  beforeEach(waitForAsync () => {
     await TestBed.configureTestingModule({
-      imports: [PaidOneBillerComponent]
+      declarations: [ PaidOneBillerComponent ]
     })
     .compileComponents();
-    
+  });
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(PaidOneBillerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

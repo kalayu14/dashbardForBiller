@@ -1,1 +1,152 @@
-<p>all-unpaid-bills works!</p>
+<div class="col-lg-12 grid-margin stretch-card">
+
+    <div class="card">
+        <div class="example-container">
+            <form [formGroup]="form">
+                <mat-form-field class="from_Date" [floatLabel]="'auto'" appearance="outline">
+                    <mat-label>From date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="fromDate"  [(ngModel)]="fromDate" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="hasError('fromDate', 'required')">from date is required</mat-error> 
+                </mat-form-field>
+            
+                <mat-form-field appearance="outline" [color]="warn">
+                    <mat-label>To date</mat-label>
+                    <input matInput [matDatepicker]="picke" formControlName="toDate" [(ngModel)]="toDate">
+                    <mat-datepicker-toggle matSuffix [for]="picke"></mat-datepicker-toggle>
+                    <mat-datepicker #picke></mat-datepicker>
+                    <mat-error *ngIf="hasError('toDate', 'required')">to date is required</mat-error> 
+                </mat-form-field>
+    
+                <button style="background-color: #ff6b6b; color: white;" class="generate_button" mat-raised-button color="warn" type="submit" (click)="getAllunpaidbills()" [disabled]="!form.valid">Generate</button>
+            </form>
+
+        </div>
+        <div class="card-body">
+            <h4>Unpaid bills for each billers {{allunpaidBillList?.totalNumber}}
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1" style="color: red;"></span>
+            </h4>
+
+            <!--Angular material table-->
+            <mat-form-field appearance="standard" style="margin-left: 1px">
+                <mat-label>Search</mat-label>
+                <input matInput (keyup)="applyFilter($event)" class="search" placeholder="Ex. Biller_id" #input>
+            </mat-form-field>
+            <div class="example-containers  mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" id="report-table">
+
+                    <ng-container matColumnDef="Biller Id">
+                        <th mat-header-cell *matHeaderCellDef>Biller Id</th>
+                        <td mat-cell *matCellDef="let element">{{element._id.biller_id}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="Biller name">
+                        <th mat-header-cell *matHeaderCellDef>Biller Name</th>
+                        <td mat-cell *matCellDef="let element"> {{element._id.Biller_name}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Count">
+                        <th mat-header-cell *matHeaderCellDef>Count</th>
+                        <td mat-cell *matCellDef="let element">{{element.count}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="getPagesizeOption()" showFirstLastButtons></mat-paginator>
+            </div>
+        </div>
+        <button style="margin-left:auto;" class="btn-download" type="submit" (click)="exportexcel()">
+            Download-Xlsx</button>
+    </div>
+</div>
+
+<!-- <div class="container">
+    <form [formGroup]="form" (ngSubmit)="getAllunpaidbills()">
+        <div class="form-group">
+            <h4> <b>un paid document list and count for all billers</b></h4>
+            <br />
+            <tr>
+                <th>
+                    <label> From Date:</label>
+                </th>
+                <th>
+                    <input style="margin-left:5px;" type="text" class="form-control" formControlName="fromDate"
+                        [ngModel]="fromDate | date:'yyyy-MM-dd'" (ngModelChange)="fromDate = $event" #dp="bsDatepicker"
+                        bsDatepicker [(ngModel)]="fromDate">
+               
+                        <div *ngIf="f.fromDate.touched && f.fromDate.invalid" class="alert alert-danger" style="margin-left:5px;">
+                            <div *ngIf="f.fromDate.errors"> fromDate is required
+                            </div>
+
+                        </div>
+               
+                </th>
+                <th>
+                    <label style="margin-left:10px;"> To Date:</label>
+                </th>
+                <th>
+                    <input style="margin-left:10px;" type="text" class="form-control" formControlName="toDate"
+                        [ngModel]="toDate | date:'yyyy-MM-dd'" (ngModelChange)="toDate = $event" #dp="bsDatepicker"
+                        bsDatepicker [(ngModel)]="toDate">
+
+                        <div *ngIf="f.toDate.touched && f.toDate.invalid" class="alert alert-danger" style="margin-left:10px;">
+                            <div *ngIf="f.toDate.errors">toDate is required </div>
+                        </div>
+                  
+                </th>
+                <th>
+                    <button class="btn" type="submit" [disabled]="!form.valid">Excute</button>
+                </th>
+                <th>
+                    <button style="margin-left: 50%;" class="btn" type="submit" [disabled]="!form.valid"
+                        (click)="clear()">Clear</button></th>
+                    </tr>
+        </div>
+    </form>
+</div>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div>
+
+                <h4 class="card-title">Totall unpaid billers count
+                    {{allunpaidBills?.totalNumber}}
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1" style="color: red;"></span>
+                </h4>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped" id="report-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Biller Id
+                            </th>
+                            <th>
+                                Biller name
+                            </th>
+                            <th>
+                                Count
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let biller of allunpaidBills?.allunpaidBillList | paginate: {itemsPerPage:1000,currentPage:p};">
+
+                            <td>{{biller._id.biller_id}}</td>
+                            <td>{{biller._id.Biller_name}}</td>
+                            <td>{{biller.count}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button style="margin-left:auto;" class="btn-download" type="submit"
+            (click)="exportexcel()">Download-Xlsx</button>
+    </div>
+</div> -->
+
+<!-- <pagination-controls (pageChange)="p= $event"></pagination-controls> -->

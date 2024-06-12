@@ -6,12 +6,14 @@ describe('AllUnpaidBillsComponent', () => {
   let component: AllUnpaidBillsComponent;
   let fixture: ComponentFixture<AllUnpaidBillsComponent>;
 
-  beforeEach(async () => {
+  beforeEach(waitForAsync () => {
     await TestBed.configureTestingModule({
-      imports: [AllUnpaidBillsComponent]
+      declarations: [ AllUnpaidBillsComponent ]
     })
     .compileComponents();
-    
+  });
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(AllUnpaidBillsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

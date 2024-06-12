@@ -6,12 +6,14 @@ describe('GetUnpaidByCreatedDateComponent', () => {
   let component: GetUnpaidByCreatedDateComponent;
   let fixture: ComponentFixture<GetUnpaidByCreatedDateComponent>;
 
-  beforeEach(async () => {
+  beforeEach(waitForAsync () => {
     await TestBed.configureTestingModule({
-      imports: [GetUnpaidByCreatedDateComponent]
+      declarations: [ GetUnpaidByCreatedDateComponent ]
     })
     .compileComponents();
-    
+  });
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(GetUnpaidByCreatedDateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

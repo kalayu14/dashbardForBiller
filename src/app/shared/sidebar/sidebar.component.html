@@ -1,0 +1,66 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+
+    <li class="nav-item" [ngClass]="{ 'active': dashboard.isActive }">
+      <a class="nav-link" routerLink="/dashboard" routerLinkActive #dashboard="routerLinkActive">
+        <span class="menu-title">
+          <h5 style="color: red;"><b>Dashboard</b></h5>
+        </span>
+        <i style="color: red;" class="mdi mdi-home menu-icon"></i>
+      </a>
+    </li>
+
+    <li class="nav-item" [ngClass]="{'active' : paidone.isActive || unpaidone.isActive || allpaid.isActive ||
+     allunpaid.isActive || totalpaid.isActive || totalunpaid.isActive || unpaidByCreatedDate.isActive
+    || updateOneBillerRange.isActive || updateOneBiller.isActive} ">
+      <a class="nav-link" (click)="uiBasicCollapsed = !uiBasicCollapsed" [attr.aria-expanded]="uiBasicCollapsed"
+        aria-controls="ui-biller">
+        <span class="menu-title">
+          <h5 style="color: red;"><b>Biller Report</b></h5>
+        </span>
+        <i style="color: red;" class="menu-arrow"></i>
+
+      </a>
+      <div class="collapse" id="ui-basic" [ngbCollapse]="!uiBasicCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" routerLink="paidone" routerLinkActive="active"
+              #paidone="routerLinkActive">
+              <span> <b>Paid one biller</b></span></a>
+          </li>
+          <li class="nav-item"> <a class="nav-link" routerLink="unpaidone" routerLinkActive="active"
+              #unpaidone="routerLinkActive">
+              <span> <b>Unpaid one biller</b></span></a>
+          </li>
+          <li class="nav-item"> <a class="nav-link" routerLink="allpaid" routerLinkActive="active"
+              #allpaid="routerLinkActive">
+              <span><b>All paid bills</b></span></a>
+          </li>
+          <li class="nav-item"> <a class="nav-link" routerLink="allunpaid" routerLinkActive="active"
+              #allunpaid="routerLinkActive">
+              <span><b>All unpaid bills</b></span></a>
+          </li>
+          <li class="nav-item"> <a class="nav-link" routerLink="totalpaid" routerLinkActive="active"
+              #totalpaid="routerLinkActive">
+              <span> <b>Total paid bills amount </b></span></a>
+          </li>
+          <li class="nav-item"> <a class="nav-link" routerLink="totalunpaid" routerLinkActive="active"
+              #totalunpaid="routerLinkActive">
+              <span><b>Total unpaid document</b></span></a>
+          </li>
+          <li class="nav-item"> <a class="nav-link" routerLink="unpaidByCreatedDate" routerLinkActive="active"
+              #unpaidByCreatedDate="routerLinkActive">
+              <span> <b>Unpaid bill bycreated date </b></span></a>
+          </li>
+          <li class="nav-item"> <a class="nav-link" routerLink="updateOneBillerRange" routerLinkActive="active"
+              #updateOneBillerRange="routerLinkActive">
+              <span> <b>Update one bill by date</b></span></a>
+          </li>
+          <li class="nav-item"> <a class="nav-link" routerLink="updateOneBiller" routerLinkActive="active"
+              #updateOneBiller="routerLinkActive">
+              <span> <b>Update one bill</b></span></a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
