@@ -15,7 +15,7 @@ import { BillerService } from '../biller.service';
   styleUrls: ['./get-unpaid-by-created-date.component.scss']
 })
 export class GetUnpaidByCreatedDateComponent implements OnInit {
-  ELEMENT_DATA: CreatedDateList[];
+  ELEMENT_DATA: CreatedDateList[]=[];
   displayedColumns: string[] = ['Biller name', 'Bill Id', 'Created date', 'Bill description', 'Bill amount due', 'Bill due date', 'Customer Id', 'Customer name'];
 
   dataSource = new MatTableDataSource<CreatedDateList>(this.ELEMENT_DATA);
@@ -32,7 +32,7 @@ export class GetUnpaidByCreatedDateComponent implements OnInit {
   createDate: string;
   loading: boolean;
   createdDate: { countDocument: number; createdDateList: CreatedDateList[]; };
-  types$;
+  
   billers: Biller;
   constructor(private billerService: BillerService, private router: Router) {
   }

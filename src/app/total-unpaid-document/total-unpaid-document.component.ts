@@ -15,7 +15,7 @@ import { BillerService } from '../biller.service';
   styleUrls: ['./total-unpaid-document.component.scss']
 })
 export class TotalUnpaidDocumentComponent implements OnInit {
-  ELEMENT_DATA: Result[];
+  ELEMENT_DATA: Result[]= [];
   displayedColumns: string[] = ['UnPaid time', 'Total Unpaid'];
 
   dataSource = new MatTableDataSource<Result>(this.ELEMENT_DATA);

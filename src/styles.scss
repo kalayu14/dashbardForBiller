@@ -8,7 +8,7 @@
 @import "bootstrap/scss/bootstrap";
 @import "./assets/scss/fonts";
 @import "./assets/scss/functions";
-@import "@angular/material/theming";
+@import "~@angular/material/core/theming";
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 $mat-myapp-primary: (

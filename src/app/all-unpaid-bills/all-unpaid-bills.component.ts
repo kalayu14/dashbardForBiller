@@ -8,10 +8,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { BillerService } from '../biller.service';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-all-unpaid-bills',
-  templateUrl: './all-unpaid-bills.component.html',
+  templateUrl:'./all-unpaid-bills.component.html',
   styleUrls: ['./all-unpaid-bills.component.scss']
 })
 export class AllUnpaidBillsComponent implements OnInit {
@@ -31,6 +32,7 @@ export class AllUnpaidBillsComponent implements OnInit {
   toDate: Date;
   loading: Boolean;
   allunpaidBills: { totalNumber: number; allunpaidBillList: UnPaidBillersList[]; };
+  warn: ThemePalette;
 
   constructor(private billerService: BillerService, private router: Router) { }
   ngAfterViewInit() {

@@ -15,7 +15,7 @@ import { BillerService } from '../biller.service';
   styleUrls: ['./total-paid-bills-amount-report.component.scss']
 })
 export class TotalPaidBillsAmountReportComponent implements OnInit {
-  ELEMENT_DATA: TotalPaidAmount[];
+  ELEMENT_DATA: TotalPaidAmount[]=[];
   displayedColumns: string[] = ['Paid time', 'Total paid'];
 
   dataSource = new MatTableDataSource<TotalPaidAmount>(this.ELEMENT_DATA);

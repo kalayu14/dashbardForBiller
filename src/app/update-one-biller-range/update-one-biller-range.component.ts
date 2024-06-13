@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Biller } from '../Model/billerModel';
 import swal from 'sweetalert2'
 import { BillerService } from '../biller.service';
+import { setDate } from 'ngx-bootstrap/chronos/utils/date-setters';
 @Component({
   selector: 'app-update-one-biller-range',
   templateUrl: './update-one-biller-range.component.html',
@@ -16,7 +17,7 @@ export class UpdateOneBillerRangeComponent implements OnInit {
   toDate: Date;
   bill_due_dt: Date;
   loading: boolean;
-  types$;
+  
   billers: Biller;
   totalupdate: { totalModified: any; };
 
@@ -61,10 +62,10 @@ export class UpdateOneBillerRangeComponent implements OnInit {
           confirmButtonColor: 'red'
         });
       })
-    this.biller_id = null
-    this.fromDate = null;
-    this.toDate = null;
-    this.bill_due_dt = null;
+    this.biller_id = 0
+    this.fromDate = new Date();
+    this.toDate = new Date();
+    this.bill_due_dt = new Date();
   }
 
   getCustomer() {

@@ -7,7 +7,7 @@
             <mat-form-field appearance="outline">
                 <mat-label>Select biller</mat-label>
                 <mat-select [(ngModel)]="biller_id" formControlName="biller_id" id="biller_id">
-                    <mat-option *ngFor="let biller of billers" [value]="biller.stakeholder_id">{{biller.short_name}}</mat-option>
+                    <mat-option *ngFor="let biller billers" [value]="biller.stakeholder_id">{{biller.short_name}}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="hasError('biller_id', 'required')">biller id is required</mat-error> 
             </mat-form-field>

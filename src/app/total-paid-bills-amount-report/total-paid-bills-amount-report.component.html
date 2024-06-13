@@ -10,7 +10,7 @@
                 <mat-datepicker #picker></mat-datepicker>
                 <mat-error *ngIf="hasError('toDate', 'required')">from date is required</mat-error> 
             </mat-form-field>
-            <mat-form-field appearance="outline" [color]="warn">
+            <mat-form-field appearance="outline" [color]="'warn'">
                 <mat-label>To date</mat-label>
                 <input matInput [matDatepicker]="picke" formControlName="toDate" [(ngModel)]="toDate">
                 <mat-datepicker-toggle matSuffix [for]="picke"></mat-datepicker-toggle>
@@ -26,7 +26,7 @@
             </h4>
 
             <!--Angular material table-->
-            <mat-form-field appearance="standard" style="margin-left: 1px">
+            <mat-form-field appearance="outline" style="margin-left: 1px">
                 <mat-label>Search</mat-label>
                 <input matInput (keyup)="applyFilter($event)" class="search" placeholder="Ex. Biller_id" #input>
             </mat-form-field>

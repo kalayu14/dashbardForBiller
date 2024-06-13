@@ -24,12 +24,12 @@
 
         </div>
         <div class="card-body">
-            <h4>Unpaid bills for each billers {{allunpaidBillList?.totalNumber}}
+            <h4>Unpaid bills for each billers {{allunpaidBills?.totalNumber}}
                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1" style="color: red;"></span>
             </h4>
 
             <!--Angular material table-->
-            <mat-form-field appearance="standard" style="margin-left: 1px">
+            <mat-form-field appearance="outline" style="margin-left: 1px">
                 <mat-label>Search</mat-label>
                 <input matInput (keyup)="applyFilter($event)" class="search" placeholder="Ex. Biller_id" #input>
             </mat-form-field>

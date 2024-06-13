@@ -18,7 +18,7 @@ export class UpdateOneBillerComponent implements OnInit {
   createdDate: Date;
   bill_due_dt: Date;
   loading: boolean;
-  types$;
+  types$: void;
   billers: Biller;
   totalupdate: { totalModified: any; };
   paidOnebiller: { totalNumber: number; paidBillersList: PaidBillersList[]; };
@@ -64,9 +64,9 @@ export class UpdateOneBillerComponent implements OnInit {
       confirmButtonColor: "red"
       });
   })
-    this.biller_id = null
-    this.createdDate = null;
-    this.bill_due_dt = null;
+    this.biller_id = 0;
+    this.createdDate = new Date();
+    this.bill_due_dt = new Date();
   }
   getCustomer() {
     debugger;

@@ -16,7 +16,7 @@ import { BillerService } from '../biller.service';
 })
 export class UnPaidOneBillerComponent implements OnInit {
 
-  ELEMENT_DATA: UnpaidBillersList[];
+  ELEMENT_DATA: UnpaidBillersList[]=[];
   displayedColumns: string[] = ['biller name', 'Bill Id', 'Bill-Description', 'Bill amount due', 'Bill-due-date', 'Customer Id', 'Customer Name', 'Created Date'];
   dataSource = new MatTableDataSource<UnpaidBillersList>(this.ELEMENT_DATA);
   maxnumberofpage: number = 1000;
@@ -29,7 +29,7 @@ export class UnPaidOneBillerComponent implements OnInit {
   toDate: Date;
   loading: boolean;
   unpaidOnebiller: { totalNumber: number; unpaidBillersList: UnpaidBillersList[]; };
-  types$;
+ 
   billers: Biller;
 
   constructor(private billerService: BillerService, private router: Router) { }

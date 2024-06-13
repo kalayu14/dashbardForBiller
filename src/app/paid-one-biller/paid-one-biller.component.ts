@@ -17,7 +17,7 @@ import { BillerService } from '../biller.service';
 })
 export class PaidOneBillerComponent implements OnInit {
 
-  ELEMENT_DATA: PaidBillersList[];
+  ELEMENT_DATA: PaidBillersList[] = [];
   displayedColumns: string[] = ['biller name', 'Bill Id', 'Bill-Description', 'Bill amount due', 'Bill-due-date', 'Customer Id', 'Customer Name', 'Agent transaction code', 'Agent Id', 'Paid at', 'Paid date', 'Paid Amount'];
 
   dataSource = new MatTableDataSource<PaidBillersList>(this.ELEMENT_DATA);
@@ -36,7 +36,7 @@ export class PaidOneBillerComponent implements OnInit {
   toDate: Date;
   loading: boolean;
   paidOnebiller: { totalNumber: number; paidBillersList: PaidBillersList[]; };
-  types$;
+  types$: void;
   billers: Biller;
 
   constructor(private billerService: BillerService, private router: Router) {

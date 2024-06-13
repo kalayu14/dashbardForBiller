@@ -6,7 +6,7 @@
             <mat-form-field class="select_biller" appearance="outline">
                 <mat-label>Select biller</mat-label>
                 <mat-select [(ngModel)]="biller_id" formControlName="biller_id" id="biller_id">
-                    <mat-option *ngFor="let biller of billers"
+                    <mat-option *ngFor="let biller billers"
                      [value]="biller.stakeholder_id">{{biller.short_name}}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="hasError('biller_id', 'required')">biller id is required</mat-error> 
@@ -40,7 +40,7 @@
             </h4>
         
             <!--Angular material table-->
-            <mat-form-field appearance="standard" style="margin-left: 1px">
+            <mat-form-field appearance="outline" style="margin-left: 1px">
                 <mat-label>Search</mat-label>
                 <input matInput (keyup)="applyFilter($event)" class="search" placeholder="Ex. customer_id, Bill_id" #input>
             </mat-form-field>

@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
 
   totalWeeklyReport: { totalWeeklyReport: TotalPaidAmount[]; };
   totalMonthlyReport: { totalMonthlyReport: TotalPaidAmount[]; };
+onDateNavigate: any;
 
 
   toggleProBanner(event: Event) {
