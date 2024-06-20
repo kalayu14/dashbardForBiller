@@ -45,7 +45,8 @@ export class UpdateOneBillerRangeComponent implements OnInit {
     debugger
     this.loading = true;
     this.billerService.UpdateOneBillerRange(this.biller_id, this.fromDate, this.toDate, this.bill_due_dt).
-      subscribe(data => {
+      subscribe({
+        next:(data) => {
         if (data) {
           this.loading = false;
         }
@@ -56,12 +57,14 @@ export class UpdateOneBillerRangeComponent implements OnInit {
           confirmButtonColor: 'red'
         });
 
-      }, _error => {
+      }, 
+      error:_error => {
         this.loading = false;
         swal.fire({
           text: 'Updated Error!',
           confirmButtonColor: 'red'
         });
+      }
       })
     this.biller_id = 0
     this.fromDate = new Date();

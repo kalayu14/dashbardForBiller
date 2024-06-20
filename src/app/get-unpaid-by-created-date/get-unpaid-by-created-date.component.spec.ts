@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed,waitForAsync } from '@angular/core/testing';
 
 import { GetUnpaidByCreatedDateComponent } from './get-unpaid-by-created-date.component';
 
@@ -6,12 +6,12 @@ describe('GetUnpaidByCreatedDateComponent', () => {
   let component: GetUnpaidByCreatedDateComponent;
   let fixture: ComponentFixture<GetUnpaidByCreatedDateComponent>;
 
-  beforeEach(waitForAsync () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync (() => {
+    TestBed.configureTestingModule({
       declarations: [ GetUnpaidByCreatedDateComponent ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GetUnpaidByCreatedDateComponent);

@@ -10,7 +10,7 @@
                     <mat-datepicker #picker></mat-datepicker>
                     <mat-error *ngIf="hasError('toDate', 'required')">from date is required</mat-error> 
                 </mat-form-field>
-                <mat-form-field appearance="outline" [color]="warn">
+                <mat-form-field appearance="outline">
                     <mat-label>To date</mat-label>
                     <input matInput [matDatepicker]="picke" formControlName="toDate" [(ngModel)]="toDate">
                     <mat-datepicker-toggle matSuffix [for]="picke"></mat-datepicker-toggle>

@@ -18,14 +18,14 @@
                 <mat-datepicker #picker></mat-datepicker>
                 <mat-error *ngIf="hasError('fromDate', 'required')">from date is required</mat-error> 
             </mat-form-field>
-            <mat-form-field appearance="outline" [color]="warn">
+            <mat-form-field appearance="outline">
                 <mat-label>To date</mat-label>
                 <input matInput [matDatepicker]="picke" formControlName="toDate" [(ngModel)]="toDate">
                 <mat-datepicker-toggle matSuffix [for]="picke"></mat-datepicker-toggle>
                 <mat-datepicker #picke></mat-datepicker>
                 <mat-error *ngIf="hasError('toDate', 'required')">to date is required</mat-error> 
             </mat-form-field>
-            <mat-form-field appearance="outline" [color]="warn">
+            <mat-form-field appearance="outline">
                 <mat-label>Bill due date</mat-label>
                 <input matInput [matDatepicker]="pick" formControlName="bill_due_dt" [(ngModel)]="bill_due_dt">
                 <mat-datepicker-toggle matSuffix [for]="pick"></mat-datepicker-toggle>

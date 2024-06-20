@@ -57,7 +57,7 @@ export class GetUnpaidByCreatedDateComponent implements OnInit {
       return [20, 50, this.maxnumberofpage]
     }
   }
-  ngOnInit(): void {
+  ngOnInit() {
 
     this.form = new FormGroup({
 
@@ -66,7 +66,7 @@ export class GetUnpaidByCreatedDateComponent implements OnInit {
       createDate: new FormControl('', Validators.required)
 
     });
-    this.types$ = this.getCustomer();
+    //this.types$ = this.getCustomer();
   }
 
   public hasError = (controlName: string, errorName: string) =>{
@@ -110,7 +110,7 @@ export class GetUnpaidByCreatedDateComponent implements OnInit {
   // tslint:disable-next-line:member-ordering
   fileName = 'ExcelSheet.xlsx';
 
-  exportexcel(): void {
+  exportexcel() {
     /* table id is passed over here */
     let element = document.getElementById('report-table');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);

@@ -60,7 +60,7 @@ export class UnPaidOneBillerComponent implements OnInit {
       toDate: new FormControl('', Validators.required)
 
     });
-    this.types$ = this.getCustomer();
+    //this.types$ = this.getCustomer();
   }
 
   public hasError = (controlName: string, errorName: string) =>{
@@ -78,7 +78,8 @@ export class UnPaidOneBillerComponent implements OnInit {
     debugger
     this.loading = true;
 
-    this.billerService.getUnpaidOnebiller(this.biller_id, this.fromDate, this.toDate).subscribe((data) => {
+    this.billerService.getUnpaidOnebiller(this.biller_id, this.fromDate, this.toDate).subscribe({
+      next:(data) => {
       //this.paidBill = data;
       if (data) {
         this.loading = false;
@@ -91,12 +92,14 @@ export class UnPaidOneBillerComponent implements OnInit {
       this.unpaidOnebiller = response;
       this.dataSource.data = response.unpaidBillersList;
 
-    }, _error => {
+    }, 
+    error:_error => {
       this.loading = false;
       swal.fire({
         text: 'Requested data not found!',
         confirmButtonColor: 'red'
       });
+    }
     })
   }
   getCustomer() {
