@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Biller, PaidBillersList } from '../Model/billerModel';
+import { Biller, PaidBillersList, PaidOnebiller } from '../Model/billerModel';
 import { MatPaginator, } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import * as XLSX from 'xlsx';
@@ -16,6 +16,7 @@ import { BillerService } from '../biller.service';
   styleUrls: ['./paid-one-biller.component.scss']
 })
 export class PaidOneBillerComponent implements OnInit {
+//[x: string]: ThemePalette;
 
   ELEMENT_DATA: PaidBillersList[] = [];
   displayedColumns: string[] = ['biller name', 'Bill Id', 'Bill-Description', 'Bill amount due', 'Bill-due-date', 'Customer Id', 'Customer Name', 'Agent transaction code', 'Agent Id', 'Paid at', 'Paid date', 'Paid Amount'];
@@ -56,7 +57,7 @@ export class PaidOneBillerComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
     this.form = new FormGroup({
 
@@ -85,7 +86,8 @@ export class PaidOneBillerComponent implements OnInit {
 
     this.loading = true;
 
-    this.billerService.getPaidOnebiller(this.biller_id, this.fromDate, this.toDate).subscribe((data) => {
+    this.billerService.getPaidOnebiller(this.biller_id, this.fromDate, this.toDate).subscribe({
+      next:(data:PaidOnebiller) => {
       //this.paidBill = data;
       if (data) {
         this.loading = false;
@@ -99,14 +101,17 @@ export class PaidOneBillerComponent implements OnInit {
       this.paidOnebiller = response;
       this.dataSource.data = response.paidBillersList
       console.log('With Parsed JSON :', this.paidOnebiller);
-    }, _error => {
+    }, 
+    error:_error => {
       this.loading = false;
       swal.fire({
         text: 'Requested data not found!',
         confirmButtonColor: 'red'
       });
-    })
-  }
+    
+    }
+  });
+}
   getCustomer() {
     debugger;
     this.billerService.getCustomer().subscribe(response => {

@@ -5,7 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideCharts, withDefaultRegisterables, BaseChartDirective } from 'ng2-charts';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -66,7 +65,6 @@ import { BillerService } from './biller.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule,
     MatFormFieldModule,
     MatSelectModule,
     BrowserAnimationsModule,
@@ -82,10 +80,11 @@ import { BillerService } from './biller.service';
     FlexLayoutModule,
     MatPaginatorModule,
     MatTableModule,
-    BsDatepickerModule.forRoot(),
+    NgbModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
+
     useClass: AuthInterceptor,
     multi: true
   },provideCharts(withDefaultRegisterables()), BillerService, UserService, AuthGuard, AuthInterceptor],

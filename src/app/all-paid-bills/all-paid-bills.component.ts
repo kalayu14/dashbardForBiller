@@ -75,7 +75,8 @@ export class AllPaidBillsComponent implements OnInit {
   getAllpaidbills() {
     debugger
     this.loading = true;
-    this.billerService.getAllpaidbills(this.fromDate, this.toDate).subscribe((data) => {
+    this.billerService.getAllpaidbills(this.fromDate, this.toDate).subscribe({
+      next:(data) => {
       //this.paidBill = data;
       if (data) {
         this.loading = false;
@@ -89,12 +90,14 @@ export class AllPaidBillsComponent implements OnInit {
       this.allpaidBills = response;
       this.dataSource.data = response.allpaidBillList
       console.log("With Parsed JSON :", this.allpaidBills);
-    }, _error => {
+    }, 
+    error:_error => {
       this.loading = false;
       swal.fire({
         text: 'Requested data not found!',
         confirmButtonColor: "red"
       });
+    }
     });
 
 

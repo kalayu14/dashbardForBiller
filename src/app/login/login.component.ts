@@ -38,19 +38,20 @@ export class LoginComponent implements OnInit {
     }
     this.loading = true;
 
-    this.userService.loginUser(this.email, this.password).subscribe(response => {   
-      this.userService.setToken(response.token);    
-      console.log("User is logged in");
-
-      this.router.navigate(['/dashboard']);
-    },
-      _error => {
+    this.userService.loginUser(this.email, this.password).subscribe({
+      next: (response: User) => {
+        this.userService.setToken(response.token);
+        console.log("User is logged in");
+        this.router.navigate(['/dashboard']);
+      },
+      error: (_error) => {
         this.loading = false;
         swal.fire({
           text: 'Invalid username or password!',
           confirmButtonColor: "red"
         });
-      });
+      }
+    });
   }
 
 }

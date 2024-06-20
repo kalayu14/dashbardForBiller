@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Biller } from '../Model/billerModel';
 import swal from 'sweetalert2'
 import { BillerService } from '../biller.service';
-import { setDate } from 'ngx-bootstrap/chronos/utils/date-setters';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-update-one-biller-range',
   templateUrl: './update-one-biller-range.component.html',
@@ -20,6 +20,7 @@ export class UpdateOneBillerRangeComponent implements OnInit {
   
   billers: Biller;
   totalupdate: { totalModified: any; };
+  types$: void;
 
   constructor(private billerService: BillerService, private router: Router) {
   }

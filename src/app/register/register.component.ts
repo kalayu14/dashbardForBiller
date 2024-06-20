@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../Service/UserService';
 import { first } from 'rxjs/operators';
+import { of } from 'rxjs';
 import swal from 'sweetalert2'
 
 @Component({
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
   constructor(private userService: UserService, private formBuilder: FormBuilder,
     private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.registerForm = this.formBuilder.group({
       first_name: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
       last_name: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
@@ -44,23 +45,24 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
 
-    this.userService.SignupUser(this.registerForm.value)
-      .subscribe(_data => {
-        swal.fire({
-          text: 'Registration successful',
-          confirmButtonColor: "red",
-        });
+   this.userService.SignupUser(this.registerForm.value)
+  .subscribe({
+    next: (_data) => {
+      swal.fire({
+        text: 'Registration successful',
+        confirmButtonColor: "red",
+      });
 
-        //alert('Registration successful');
-        this.router.navigate(['/login']);
-      },
-        _error => {
-          this.loading = false;
-          swal.fire({
-            text: 'Registration failed!',
-            confirmButtonColor: "red"
-          });
-        });
+      this.router.navigate(['/login']);
+    },
+    error: (_error) => {
+      this.loading = false;
+      swal.fire({
+        text: 'Registration failed!',
+        confirmButtonColor: "red"
+      });
+    }
+  });
   }
 }
 
