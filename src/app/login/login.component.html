@@ -11,7 +11,7 @@
                     <!-- <img src="assets/images/login.JPG"> -->
                 </div>
 
-                <h4 class="font-weight-light" style="color: red;">ADMIN LOGIN</h4>
+                <h4 class="font-weight-light" style="color: blue;">ADMIN LOGIN</h4>
                 <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
                     <div class="form-group">
                         <input type="email" formControlName="email" [(ngModel)]="email"
@@ -36,7 +36,7 @@
                     <div class="mt-3">
                         <button [disabled]="loading"
                             class="btn-log btn-block btn-red btn-lg font-weight-medium auth-form-btn">
-                            SIGN IN
+                            LOG IN
                         </button>
 
                     </div>

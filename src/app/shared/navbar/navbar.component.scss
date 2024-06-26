@@ -40,7 +40,7 @@
       width: 55px;
     }
     .navbar-brand {
-      color: lighten(color(gray-dark), 20%);
+      //color: lighten(color(gray-dark), 20%);
       font-size: 1.5rem;
       line-height: 48px;
       margin-right: 0;
@@ -48,10 +48,10 @@
       width: 100%;
 
       &:active,
-      &:focus,
-      &:hover {
+      &:focus
+      /*&:hover {
         color: lighten(color(gray-dark), 10%);
-      }
+      }*/
 
       img {
         width: calc(#{$sidebar-width-lg} - 4px);
@@ -134,8 +134,8 @@
         }
       }
       .rtl & {
-        @extend .ml-0;
-        @extend .mr-4;
+        @extend .ml-0 !optional;
+        @extend .mr-4 !optional;
       }
     }
 
@@ -231,7 +231,7 @@
                 }
                 .rtl & {
                   i {
-                    @extend .mr-0;
+                    @extend .mr-0 !optional;
                     margin-left: 10px;
                   }
                 }

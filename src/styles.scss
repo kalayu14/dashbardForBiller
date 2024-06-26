@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@use "sass:map";
 @use "@angular/material" as mat;
 
 /* Import statements should follow the @use rule */
@@ -66,7 +65,7 @@ $my-app-light-theme: mat.m2-define-light-theme(
 @import "./assets/scss/responsive";
 @import "./assets/scss/misc";
 @import "./assets/scss/utilities";
-@import "./assets/scss/demo";
+//@import "./assets/scss/demo";
 @import "./assets/scss/spinner";
 
 /* === Components === */
@@ -79,7 +78,7 @@ $my-app-light-theme: mat.m2-define-light-theme(
 @import "./assets/scss/components/breadcrumbs";
 @import "./assets/scss/components/badges";
 @import "./assets/scss/components/cards";
-@import "./assets/scss/components/preview";
+//@import "./assets/scss/components/preview";
 @import "./assets/scss/components/tooltips";
 @import "./assets/scss/components/popovers";
 @import "./assets/scss/components/lists";
@@ -90,7 +89,7 @@ $my-app-light-theme: mat.m2-define-light-theme(
 @import "./assets/scss/components/date-picker";
 @import "./assets/scss/components/pagination";
 @import "./assets/scss/components/portfolio";
-@import "./assets/scss/components/todo-list";
+//@import "./assets/scss/components/todo-list";
 @import "./assets/scss/components/landing-screens/auth";
 
 /* === Layout === */
